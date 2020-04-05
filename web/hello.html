@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+        
+        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript">
+        
+        function setPyRandom(x) {
+            document.getElementById("py_random").innerText = x;
+        }
+        eel.py_random()(setPyRandom);
+        
+        function setList(x) {
+            document.getElementById("py_list").innerText = `[${x}] sum: ${x.reduce((sum, n) => sum + parseInt(n), 0)}`;
+        }
+        eel.py_list()(setList);
+        
+        function setDict(x) {
+            document.getElementById("py_dict").innerText = `${JSON.stringify(x)} keys: [${Object.keys(x)}]`;
+        }
+        eel.py_dict()(setDict);
+        
+        function setClass(x) {
+            console.log(x)
+            document.getElementById("py_class").innerText = `${JSON.stringify(x)}`;
+        }
+        eel.py_class()(setClass);
+        </script>
+    </head>
+    
+    <body>
+        <p>Hello, World!</p>
+        <p id="py_random"></p>
+        <p id="py_list"></p>
+        <p id="py_dict"></p>
+        <p id="py_class"></p>
+    </body>
+</html>
